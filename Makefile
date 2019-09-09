@@ -6,7 +6,7 @@
 #    By: kmira <kmira@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/31 00:32:20 by kmira             #+#    #+#              #
-#    Updated: 2019/09/09 03:40:20 by kmira            ###   ########.fr        #
+#    Updated: 2019/09/09 03:55:24 by kmira            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,11 @@ sync:
 	cp libft/libft.h ./includes/libft.h
 	cp -rf libui/includes/* ./includes/
 	cp -rf libui/Resources/ ./Resources/
+
+#The quick   make pragmas  remake guimp, libui
+#The quicker make pragmas  remake guimp
+#The regular make comamnds   make guimp, libui, and libft
+
 
 quick_pragma: $(LIBUI_LIBRARY) $(OBJS)
 	@echo "Making your GUImp program..."
