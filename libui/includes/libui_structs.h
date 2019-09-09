@@ -1,29 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   libui_structs.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/31 01:04:45 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/09 03:44:46 by kmira            ###   ########.fr       */
+/*   Created: 2019/09/09 03:40:36 by kmira             #+#    #+#             */
+/*   Updated: 2019/09/09 03:41:22 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "guimp.h"
+#ifndef LIBUI_STRUCTS_H
+# define LIBUI_STRUCTS_H
 
-#define RUN_TIME 800
-
-int		main(void)
-{
-	int	quit;
-	int	i;
-
-	i = 0;
-	quit = 0;
-	while (i < RUN_TIME && quit == 0)
-	{
-		i++;
-	}
-	return (0);
-}
+#endif

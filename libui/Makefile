@@ -6,20 +6,28 @@
 #    By: kmira <kmira@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/12 11:40:08 by kmira             #+#    #+#              #
-#    Updated: 2019/08/31 00:42:14 by kmira            ###   ########.fr        #
+#    Updated: 2019/09/09 03:44:12 by kmira            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libui.a
 FLAGS	= -Wall -Werror -Wextra -c
 
-INCLUDES = libft
+INCLUDES =	-I libft \
+			-I includes \
+			-I Frameworks/SDL2.framework/Versions/A/Headers \
+			-I Frameworks/SDL2_image.framework/Versions/A/Headers \
+			-I Frameworks/SDL2_ttf.framework/Versions/A/Headers \
+			-I Frameworks/SDL2_mixer.framework/Versions/A/Headers \
+			-F Frameworks/
+
 LIBRARY = libft/libft.a
 
 FILES	=	\
-			test \
+			load \
 
-C_FILES	= $(addsuffix .c, $(addprefix ft_, $(FILES)))
+
+SRCS	= $(addsuffix .c, $(addprefix ft_, $(FILES)))
 OBJ		= $(addsuffix .o, $(addprefix ft_, $(FILES)))
 
 .PHONY: clean fclean all re
@@ -36,7 +44,7 @@ $(LIBRARY):
 
 $(OBJ) :
 	@echo "	Making OBJ Files..."
-	@gcc $(FLAGS) $(C_FILES)
+	@gcc $(FLAGS) $(INCLUDES) -c $(SRCS)
 
 clean:
 	@echo "	Removing only OBJ files..."

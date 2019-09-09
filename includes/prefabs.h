@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   prefabs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/31 01:04:45 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/09 03:44:46 by kmira            ###   ########.fr       */
+/*   Created: 2019/09/08 17:43:08 by kmira             #+#    #+#             */
+/*   Updated: 2019/09/09 03:39:03 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "guimp.h"
+#ifndef PREFABS_H
+# define PREFABS_H
 
-#define RUN_TIME 800
+# define BAR_HEIGHT 20
 
-int		main(void)
-{
-	int	quit;
-	int	i;
+# define BORDER_HEIGHT 1
 
-	i = 0;
-	quit = 0;
-	while (i < RUN_TIME && quit == 0)
-	{
-		i++;
-	}
-	return (0);
-}
+# define COMMON_WIDTH 220
+
+# define DEFAULT_FONT_SIZE 14
+
+#endif
