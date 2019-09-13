@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   guimp.h                                            :+:      :+:    :+:   */
+/*   ft_assets.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/31 01:05:01 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/09 18:36:36 by kmira            ###   ########.fr       */
+/*   Created: 2019/09/10 23:34:57 by kmira             #+#    #+#             */
+/*   Updated: 2019/09/10 23:35:07 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TUTORIAL_H
-# define TUTORIAL_H
+#include "libui.h"
 
-# include <stdio.h>
+SDL_Texture		*ft_get_bar(SDL_Renderer *renderer)
+{
+	static SDL_Texture	*bar;
 
-# include "libui.h"
-# include "libft.h"
-# include "color.h"
+	if (bar == 0)
+		bar = load_image("Resources/Border.png", renderer);
+	return (bar);
+}
 
-# define WIN_WIDTH 640
-# define WIN_HEIGHT 480
+SDL_Texture		*ft_get_divider(SDL_Renderer *renderer)
+{
+	static SDL_Texture	*divider;
 
-# define FALSE 0
-# define TRUE 1
-
-#endif
+	if (divider == 0)
+		divider = load_image("Resources/Divider.png", renderer);
+	return (divider);
+}

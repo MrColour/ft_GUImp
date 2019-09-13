@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 17:43:08 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/09 03:39:03 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/10 23:58:05 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # define BORDER_HEIGHT 1
 
-# define COMMON_WIDTH 220
+# define COMMON_WIDTH 150
 
 # define DEFAULT_FONT_SIZE 14
 

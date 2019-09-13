@@ -5,12 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/09 03:42:59 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/09 03:43:14 by kmira            ###   ########.fr       */
+/*   Created: 2019/09/10 23:34:27 by kmira             #+#    #+#             */
+/*   Updated: 2019/09/10 23:34:38 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		test(void)
+#include "libui.h"
+
+SDL_Texture		*load_image(const char *file_path, SDL_Renderer *renderer)
 {
-	return (1);
+	SDL_Texture	*texture = IMG_LoadTexture(renderer, file_path);
+	if (texture == NULL)
+		printf(RED"Error in making the image to a texture! File: %s\n"COLOR_RESET, file_path);
+	return (texture);
 }

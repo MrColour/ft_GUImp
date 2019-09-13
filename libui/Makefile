@@ -6,7 +6,7 @@
 #    By: kmira <kmira@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/12 11:40:08 by kmira             #+#    #+#              #
-#    Updated: 2019/09/09 03:44:12 by kmira            ###   ########.fr        #
+#    Updated: 2019/09/12 22:18:57 by kmira            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,17 @@ INCLUDES =	-I libft \
 LIBRARY = libft/libft.a
 
 FILES	=	\
+			assets \
+			bar_below \
+			bar_right \
+			bar_top \
+			border \
+			common_functions \
+			init_font \
+			initialize \
 			load \
+			render_texture \
+			text \
 
 
 SRCS	= $(addsuffix .c, $(addprefix ft_, $(FILES)))
