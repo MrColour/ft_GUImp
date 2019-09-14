@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 03:40:36 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/12 22:27:42 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/14 00:40:55 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,35 +31,61 @@ typedef struct	s_events
 	char		wheel_down;
 }				t_events;
 
+typedef enum	e_activity
+{
+    DISPLAY_ON  = 0b001,
+    HIDDEN_BOX  = 0b010,
+    MOUSE_HOVER = 0b100
+}				t_activity;
+
+typedef struct s_state
+{
+	t_activity	standard;
+	int			draw_x;
+	int			draw_y;
+	void		*special;
+	char		*name;
+}				t_state;
+
+typedef	struct s_rectangle
+{
+	int			begin_x;
+	int			begin_y;
+	int			end_x;
+	int			end_y;
+}				t_rect;
+
+typedef struct	s_box	t_box;
 typedef	struct	s_linker t_linker;
 
-typedef struct	s_gen_box
+typedef	struct	s_window
 {
-	SDL_Window 			*window;
-	SDL_Renderer		*renderer;
-	int					pos_x;
-	int					pos_y;
-	int					width;
-	int					height;
-	SDL_Texture			*texture;
-	char				*name;
+	t_rect			rect;
+	t_events		events;
+	SDL_Renderer	*renderer;
+}				t_window;
 
-	struct s_linker		*trie;
+typedef struct	s_box
+{
+	t_window		*window;
+	t_rect			rect;
+	t_state			state;
+	SDL_Texture		*layer;
 
-	t_events			*events;
-	void				*self_state;
-	struct s_gen_box	*parent_state;
+	t_box			*parent;
+	t_linker		*tree;
 
-	int					(*render_active)(struct s_gen_box *, void *, t_events *);
-	void				*(*read_state)(void *, char *);
-	void				(*set_state)(struct s_gen_box *, struct s_gen_box *, t_events *);
+	void			(*set_state)(t_box self);
+	void			(*child_requirement)(t_box self);
+	void			(*parent_requirment)(t_box self);
 
-}					t_gen_box;
+	void			*(*fetch_state)(t_box *, char *command);
+}				t_box;
 
 typedef struct	s_linker
 {
-	t_gen_box	*data;
-	struct s_linker		*next;
+	t_box			*data;
+	struct s_linker	*next;
 }				t_linker;
 
 #endif

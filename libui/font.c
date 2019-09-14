@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prefabs.h                                          :+:      :+:    :+:   */
+/*   font.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/08 17:43:08 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/14 00:49:05 by kmira            ###   ########.fr       */
+/*   Created: 2019/09/08 01:59:30 by kmira             #+#    #+#             */
+/*   Updated: 2019/09/13 21:48:00 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PREFABS_H
-# define PREFABS_H
+#include "libui.h"
 
-# define DEFAULT_FONT_SIZE 14
+TTF_Font	*init_font(char *file_path, int font_size)
+{
+	TTF_Font	*resulting_font;
 
-# define WINDOW_WIDTH 420
-# define WINDOW_HEIGHT 640
-
-# define BAR_WIDTH 100
-# define BAR_HEIGHT 20
-
-#endif
+	resulting_font = NULL;
+	resulting_font = TTF_OpenFont(file_path, font_size);
+	if (resulting_font == NULL)
+		printf(RED"Sorry we do not currently have this font\n"COLOR_RESET);
+	return (resulting_font);
+}

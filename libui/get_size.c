@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prefabs.h                                          :+:      :+:    :+:   */
+/*   get_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/08 17:43:08 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/14 00:49:05 by kmira            ###   ########.fr       */
+/*   Created: 2019/09/13 23:26:19 by kmira             #+#    #+#             */
+/*   Updated: 2019/09/14 01:23:17 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PREFABS_H
-# define PREFABS_H
+#include "libui.h"
 
-# define DEFAULT_FONT_SIZE 14
+int		get_width(t_rect rect)
+{
+	int	width;
 
-# define WINDOW_WIDTH 420
-# define WINDOW_HEIGHT 640
+	width = rect.end_x - rect.begin_x;
+	return (width);
+}
 
-# define BAR_WIDTH 100
-# define BAR_HEIGHT 20
+int		get_height(t_rect rect)
+{
+	int	height;
 
-#endif
+	height = rect.end_y - rect.begin_y;
+	return (height);
+}
