@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 00:38:25 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/14 00:17:23 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/15 01:58:56 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ SDL_Window		*create_default_window(int win_width, int win_height)
 		printf(RED"There was an error creating the window!\n"COLOR_RESET);
 		SDL_Quit();
 	}
+	g_font = NULL;
 	g_font = init_font("Resources/Fonts/Roboto-Regular.ttf", DEFAULT_FONT_SIZE);
 	return (window);
 }

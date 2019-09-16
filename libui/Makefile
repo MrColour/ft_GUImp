@@ -6,7 +6,7 @@
 #    By: kmira <kmira@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/12 11:40:08 by kmira             #+#    #+#              #
-#    Updated: 2019/09/14 01:05:23 by kmira            ###   ########.fr        #
+#    Updated: 2019/09/15 01:04:01 by kmira            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ LIBRARY = libft/libft.a
 
 FILES	=	\
 			bar \
+			border \
 			draw \
 			element \
 			font \
@@ -33,6 +34,8 @@ FILES	=	\
 			main_window \
 			move \
 			render \
+			text \
+			tree_functions \
 
 
 SRCS	= $(addsuffix .c, $(FILES))

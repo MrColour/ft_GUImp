@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   tree_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/13 23:20:09 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/14 21:17:29 by kmira            ###   ########.fr       */
+/*   Created: 2019/09/14 19:32:22 by kmira             #+#    #+#             */
+/*   Updated: 2019/09/14 20:36:49 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libui.h"
 
-void	render_tree(t_box *box)
+void	tree_append(t_box *parent, t_box *child)
 {
-	t_linker *node;
+	t_linker	*node;
 
-	if (box == NULL)
-		return ;
-	// printf("Rendering box\n");
-	node = box->tree;
-	if (box->state.standard & DISPLAY_ON)
-		draw_box(box);
-	while (node != NULL)
+	if (parent->tree == NULL)
 	{
-		// printf("Rendering child\n");
-		render_tree(node->data);
-		node = node->next;
+		parent->tree = malloc(sizeof(parent->tree) * (1));
+		parent->tree->data = child;
+		parent->tree->next = NULL;
+		return ;
 	}
+	node = parent->tree;
+	while (node->next != NULL)
+		node = node->next;
+	node->next = malloc(sizeof(parent->tree) * (1));
+	node->next->data = child;
+	node->next->next = NULL;
 }

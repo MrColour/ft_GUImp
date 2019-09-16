@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:04:45 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/14 01:33:39 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/15 19:32:35 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ int		main(void)
 	window.renderer = SDL_CreateRenderer(back_window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_TARGETTEXTURE);
 	window.rect = main_window(WINDOW_WIDTH, WINDOW_HEIGHT);
 
-	t_box *bar;
-	bar = common_element(NULL, get_bar_rectangle(), get_bar_layer(window.renderer), &window);
-	bar->state.draw_y = WINDOW_HEIGHT;
-	bar->state.standard = bar->state.standard | DISPLAY_ON;
+	t_box	*bar;
+	t_box	*bar1;
+
+	bar = bar_default(&window, "Something", 0, WINDOW_HEIGHT);
+	bar1 = bar_below(bar, "test");
 
 	quit = 0;
 	while (quit == 0)
@@ -45,7 +46,6 @@ int		main(void)
 				// SDL_GetMouseState(&ui_state.mouse_pos_x, &ui_state.mouse_pos_y);
 		}
 		render_tree(bar);
-		// SDL_RenderCopy(bar->window->renderer, bar->layer, NULL, &dst);
 		SDL_RenderPresent(window.renderer);
 		SDL_Delay(90);
 	}

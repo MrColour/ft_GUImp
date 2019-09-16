@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 23:23:13 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/14 01:33:02 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/15 17:05:52 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,12 @@ void	draw_box(t_box *box)
 	}
 	dst.x = box->state.draw_x;
 	dst.y = get_height(box->window->rect) - box->state.draw_y;
-	printf("Window is %d and box is %d\n", get_height(box->window->rect), box->state.draw_y);
+	// printf("Window is %d and box is (%d, %d)\n", get_height(box->window->rect), box->state.draw_x, box->state.draw_y);
+	// printf("NAME: %s\n", box->state.name);
+	// printf("Window is %d and box is (%d, %d)\n", get_height(box->window->rect), dst.x, dst.y);
 	dst.h = get_height(box->rect);
 	dst.w = get_width(box->rect);
 	SDL_RenderCopy(box->window->renderer, box->layer, NULL, &dst);
-	printf("Your thingy was drawn\n");
+
+	// printf("Your thingy was drawn\n");
 }
