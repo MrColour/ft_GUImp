@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 17:43:08 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/14 21:16:14 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/15 19:49:34 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,13 @@
 
 # define BORDER_WIDTH COMMON_WIDTH
 # define BORDER_HEIGHT 1
+
+enum	e_Move_option
+{
+    MOVE_UP    = 0b0001,
+    MOVE_DOWN  = 0b0010,
+    MOVE_LEFT  = 0b0100,
+    MOVE_RIGHT = 0b1000
+};
 
 #endif

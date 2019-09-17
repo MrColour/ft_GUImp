@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 00:44:50 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/15 19:33:42 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/15 19:57:05 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,17 @@ t_box	*bar_below(t_box *parent, char *text)
 	t_box	*bar_below;
 
 	bar_below = bar_common(parent->window, text);
-	move_below(parent, bar_below);
+	move_option(parent, bar_below, MOVE_DOWN);
 
 	return (bar_below);
 }
 
+t_box	*bar_right(t_box *parent, char *text)
+{
+	t_box	*bar_below;
+
+	bar_below = bar_common(parent->window, text);
+	move_option(parent, bar_below, MOVE_RIGHT);
+
+	return (bar_below);
+}

@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:07:04 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/15 02:13:57 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/15 19:54:40 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ SDL_Texture	*get_bar_layer(SDL_Renderer *renderer);
 t_box		*bar_default(t_window *window, char *text, int x, int y);
 
 t_box		*bar_below(t_box *parent, char *text);
+t_box		*bar_right(t_box *parent, char *text);
 
 t_rect		get_border_rectangle(void);
 SDL_Texture	*get_border_layer(SDL_Renderer *renderer);
@@ -98,7 +99,7 @@ int				get_height(t_rect rect);
 void			draw_box(t_box *box);
 void			move_rectangle(t_rect *rectangle, int x, int y);
 void			move_recursive(t_box *box, int amount_right, int amount_down);
-void			move_below(t_box *parent, t_box *child);
+void			move_option(t_box *parent, t_box *child, int option);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-

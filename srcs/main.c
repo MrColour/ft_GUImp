@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:04:45 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/15 19:32:35 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/15 19:59:36 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ int		main(void)
 
 	t_box	*bar;
 	t_box	*bar1;
+	t_box	*bar2;
 
 	bar = bar_default(&window, "Something", 0, WINDOW_HEIGHT);
 	bar1 = bar_below(bar, "test");
+	bar2 = bar_right(bar1, "YOOT");
 
 	quit = 0;
 	while (quit == 0)

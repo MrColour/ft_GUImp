@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 01:02:34 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/15 19:39:04 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/15 19:58:37 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,34 +37,25 @@ void	move_recursive(t_box *box, int amount_right, int amount_down)
 	}
 }
 
-void	move_aboves(t_box *parent, t_box *child)
+void	move_option(t_box *parent, t_box *child, int option)
 {
+	int delta_x;
+	int delta_y;
+
+	delta_x = 0;
+	delta_y = 0;
+	if (option & MOVE_UP)
+		delta_y = get_height(parent->rect);
+	else if (option & MOVE_DOWN)
+		delta_y = -1 * get_height(parent->rect);
+	if (option & MOVE_RIGHT)
+		delta_x = get_width(parent->rect);
+	else if (option & MOVE_LEFT)
+		delta_x = -1 * get_width(parent->rect);
+
 	move_recursive(child,
-					parent->state.draw_x,
-					parent->state.draw_y + get_height(parent->rect));
+					parent->state.draw_x + delta_x,
+					parent->state.draw_y + delta_y);
 	tree_append(parent, child);
 }
 
-void	move_below(t_box *parent, t_box *child)
-{
-	move_recursive(child,
-					parent->state.draw_x,
-					parent->state.draw_y - get_height(parent->rect));
-	tree_append(parent, child);
-}
-
-void	move_left(t_box *parent, t_box *child)
-{
-	move_recursive(child,
-					parent->state.draw_x - get_width(parent->rect),
-					parent->state.draw_y);
-	tree_append(parent, child);
-}
-
-void	move_right(t_box *parent, t_box *child)
-{
-	move_recursive(child,
-					parent->state.draw_x + get_width(parent->rect),
-					parent->state.draw_y);
-	tree_append(parent, child);
-}
