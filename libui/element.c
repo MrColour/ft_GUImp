@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 00:23:11 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/15 19:53:40 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/18 23:24:04 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,7 @@ t_box	*common_element(t_box *parent, t_rect rect, SDL_Texture *layer, t_window *
 	result->parent_requirment = NULL;
 
 	result->fetch_state = NULL;
-
-	return (result);
-}
-
-t_box	*common_element_below(t_box *parent, t_rect rect, SDL_Texture *layer)
-{
-	t_box *result;
-
-	result = common_element(parent, rect, layer, parent->window);
-	move_option(parent, result, MOVE_DOWN);
-
-	return (result);
-}
-
-t_box	*common_element_right(t_box *parent, t_rect rect, SDL_Texture *layer)
-{
-	t_box *result;
-
-	result = common_element(parent, rect, layer, parent->window);
-	move_option(parent, result, MOVE_RIGHT);
+	result->state.name = strdup(BLUE"Unassigned"COLOR_RESET);
 
 	return (result);
 }

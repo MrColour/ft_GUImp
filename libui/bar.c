@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 00:44:50 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/15 19:57:05 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/18 23:23:24 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,20 @@ SDL_Texture	*get_bar_layer(SDL_Renderer *renderer)
 
 t_box	*bar_common(t_window *window, char *text)
 {
-	t_box	*bar_top;
+	t_box	*bar;
 	t_box	*border;
 	t_box	*text_box;
 
-	bar_top = common_element(NULL, get_bar_rectangle(), get_bar_layer(window->renderer), window);
-	bar_top->state.standard = bar_top->state.standard | DISPLAY_ON;
-	bar_top->state.name = strdup("BAR");
+	bar = common_element(NULL, get_bar_rectangle(), get_bar_layer(window->renderer), window);
+	bar->state.name = strdup("BAR");
 
+	border = install_border(bar);
+	border->set_state = &state_copy_parent;
 
-	border = install_border(bar_top);
-	border->state.standard = border->state.standard | DISPLAY_ON;
+	text_box = install_text(bar, 0, 5, text);
+	text_box->set_state = &state_copy_parent;
 
-	text_box = install_text(bar_top, 0, 5, text);
-	text_box->state.standard = text_box->state.standard | DISPLAY_ON;
-
-	return (bar_top);
+	return (bar);
 }
 
 t_box	*bar_default(t_window *window, char *text, int x, int y)
@@ -62,22 +60,17 @@ t_box	*bar_default(t_window *window, char *text, int x, int y)
 	return (bar);
 }
 
-t_box	*bar_below(t_box *parent, char *text)
+t_box	*bar_on_option(t_box *parent, char *text, int option)
 {
 	t_box	*bar_below;
 
 	bar_below = bar_common(parent->window, text);
-	move_option(parent, bar_below, MOVE_DOWN);
-
-	return (bar_below);
-}
-
-t_box	*bar_right(t_box *parent, char *text)
-{
-	t_box	*bar_below;
-
-	bar_below = bar_common(parent->window, text);
-	move_option(parent, bar_below, MOVE_RIGHT);
+	move_option(parent, bar_below, option);
+	if (parent->parent == NULL)
+		bar_below->parent = parent;
+	else
+		bar_below->parent = parent->parent;
+	bar_below->set_state = &common_set_state;
 
 	return (bar_below);
 }

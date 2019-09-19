@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 01:02:34 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/15 19:58:37 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/18 02:06:04 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ void	move_option(t_box *parent, t_box *child, int option)
 	move_recursive(child,
 					parent->state.draw_x + delta_x,
 					parent->state.draw_y + delta_y);
-	tree_append(parent, child);
+	tree_append_parent(parent, child);
 }
 

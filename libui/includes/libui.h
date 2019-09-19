@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:07:04 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/15 19:54:40 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/18 23:20:40 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ t_rect			main_window(int window_width, int window_height);
 t_box	*common_element(t_box *parent, t_rect rect, SDL_Texture *layer, t_window *window);
 t_box	*common_element_below(t_box *parent, t_rect rect, SDL_Texture *layer);
 
+void	common_set_state(t_box *self);
+void	state_copy_parent(t_box *self);
+
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
 ** BAR CLASS
@@ -58,8 +61,7 @@ t_rect		get_bar_rectangle(void);
 SDL_Texture	*get_bar_layer(SDL_Renderer *renderer);
 t_box		*bar_default(t_window *window, char *text, int x, int y);
 
-t_box		*bar_below(t_box *parent, char *text);
-t_box		*bar_right(t_box *parent, char *text);
+t_box		*bar_on_option(t_box *parent, char *text, int options);
 
 t_rect		get_border_rectangle(void);
 SDL_Texture	*get_border_layer(SDL_Renderer *renderer);
@@ -80,8 +82,11 @@ t_box	*install_text(t_box *parent, int top_padding, int left_padding, char *text
 */
 
 void	render_tree(t_box *box);
+void	set_tree(t_box *box);
+int		state_in_tree(t_box *box, t_activity search_state, int depth);
 
 void	tree_append(t_box *parent, t_box *child);
+void	tree_append_parent(t_box *parent, t_box *child);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
@@ -90,6 +95,8 @@ void	tree_append(t_box *parent, t_box *child);
 
 int				get_width(t_rect rect);
 int				get_height(t_rect rect);
+
+int				is_within(int mouse_x, int mouse_y, t_rect rectanle, int rect_pos_x, int rect_pos_y);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-

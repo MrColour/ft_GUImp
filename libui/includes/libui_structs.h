@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 03:40:36 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/14 00:40:55 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/18 01:31:21 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ typedef struct	s_events
 
 typedef enum	e_activity
 {
-    DISPLAY_ON  = 0b001,
-    HIDDEN_BOX  = 0b010,
-    MOUSE_HOVER = 0b100
+    BOX_ACTIVE     = 0b00001,
+    PASSIVE_ACTIVE = 0b00010,
+    DISPLAY_ON     = 0b00100,
+    HIDDEN_BOX     = 0b01000,
+    MOUSE_HOVER    = 0b10000
 }				t_activity;
 
 typedef struct s_state
@@ -75,9 +77,9 @@ typedef struct	s_box
 	t_box			*parent;
 	t_linker		*tree;
 
-	void			(*set_state)(t_box self);
-	void			(*child_requirement)(t_box self);
-	void			(*parent_requirment)(t_box self);
+	void			(*set_state)(t_box *self);
+	void			(*child_requirement)(t_box *self);
+	void			(*parent_requirment)(t_box *self);
 
 	void			*(*fetch_state)(t_box *, char *command);
 }				t_box;

@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 22:27:48 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/15 19:35:29 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/17 01:42:40 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ t_box	*install_text(t_box *parent, int top_padding, int left_padding, char *text
 				text,
 				parent->state.draw_x + left_padding,
 				parent->state.draw_y - top_padding);
+	text_box->parent = parent;
 
 	tree_append(parent, text_box);
 	return (text_box);
