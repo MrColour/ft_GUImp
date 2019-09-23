@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 23:20:09 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/18 23:20:23 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/23 03:56:13 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void	set_tree(t_box *box)
 	// printf("Setting the state of the box\n");
 	// printf("Setting: %s\n", box->state.name);
 	node = box->tree;
+	if (box->set_state != NULL)
+		box->set_state(box);
 	while (node != NULL)
 	{
 		// printf("Rendering child\n");
 		set_tree(node->data);
 		node = node->next;
 	}
-	if (box->set_state != NULL)
-		box->set_state(box);
 }
 
 int		find_tree(t_box *box, t_activity search, int depth, int current_depth)
@@ -83,4 +83,10 @@ int		state_in_tree(t_box *box, t_activity search_state, int depth)
 
 	result = find_tree(box, search_state, depth, 0);
 	return (result);
+}
+
+void	master_reccursive_call(t_box *root)
+{
+	set_tree(root);
+	render_tree(root);
 }

@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:07:04 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/22 17:35:22 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/23 03:56:31 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ t_box	*install_text(t_box *parent, int top_padding, int left_padding, char *text
 void	render_tree(t_box *box);
 void	set_tree(t_box *box);
 int		state_in_tree(t_box *box, t_activity search_state, int depth);
+
+void	master_reccursive_call(t_box *root);
 
 void	tree_append(t_box *parent, t_box *child);
 void	tree_append_parent(t_box *parent, t_box *child);

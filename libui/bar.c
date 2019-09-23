@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 00:44:50 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/18 23:23:24 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/23 00:51:50 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_box	*bar_common(t_window *window, char *text)
 	t_box	*text_box;
 
 	bar = common_element(NULL, get_bar_rectangle(), get_bar_layer(window->renderer), window);
-	bar->state.name = strdup("BAR");
+	bar->state.name = strdup(text);
 
 	border = install_border(bar);
 	border->set_state = &state_copy_parent;

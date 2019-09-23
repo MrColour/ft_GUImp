@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 00:21:29 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/22 17:38:45 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/23 03:52:52 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,45 @@
 
 void	top_item(t_box *self)
 {
-	self->state.standard |= (PASSIVE_ACTIVE | DISPLAY_ON);
+	self->state.standard |= DISPLAY_ON;
 
 	if (is_within(	self->window->events.mouse_pos_x,
 					self->window->events.mouse_pos_y,
 					self->rect,
 					self->state.draw_x,
-					self->state.draw_y) == 1 &&
-					self->state.standard & DISPLAY_ON)
+					self->state.draw_y) == 1)
 	{
-		printf("TOP BAR is hoevered\n");
-		self->state.standard |= MOUSE_HOVER;
+		// printf("BAR is hovered %s\n", self->state.name);
+		self->state.standard |= MOUSE_HOVER | BOX_ACTIVE;
 	}
 	else
 	{
-		self->state.standard &= ~(MOUSE_HOVER);
+		self->state.standard &= ~(MOUSE_HOVER | BOX_ACTIVE);
 	}
 
+	t_linker	*node;
+	int			re;
+
+	re = 0;
+	node = self->tree;
+	while (node != NULL)
+	{
+		if (is_within(	self->window->events.mouse_pos_x,
+						self->window->events.mouse_pos_y,
+						node->data->rect,
+						node->data->state.draw_x,
+						node->data->state.draw_y) == 1 &&
+						node->data->state.standard & DISPLAY_ON)
+		{
+			re = 1;
+			break ;
+		}
+		node = node->next;
+	}
+	if (re == 1)
+		self->state.standard |= PASSIVE_ACTIVE;
+	else
+		self->state.standard &= ~(PASSIVE_ACTIVE);
 }
 
 void	common_set_state(t_box *self)
@@ -45,8 +67,11 @@ void	common_set_state(t_box *self)
 	parent = self->parent;
 	state_copy = self->state;
 
-	if (parent->state.standard & (MOUSE_HOVER | PASSIVE_ACTIVE))
+	if (parent->state.standard & (PASSIVE_ACTIVE | MOUSE_HOVER))
+	{
+		// printf("Self is active %s\n", self->state.name);
 		self->state.standard |= DISPLAY_ON;
+	}
 
 	if (is_within(	self->window->events.mouse_pos_x,
 					self->window->events.mouse_pos_y,
@@ -55,19 +80,19 @@ void	common_set_state(t_box *self)
 					self->state.draw_y) == 1 &&
 					self->state.standard & DISPLAY_ON)
 	{
-		printf(MAGENTA"First child bar is hovered\n"COLOR_RESET);
+		// printf(MAGENTA"First child bar is hovered\n"COLOR_RESET);
 		self->state.standard |= MOUSE_HOVER | BOX_ACTIVE | DISPLAY_ON;
 		parent->state.standard |= PASSIVE_ACTIVE;
 	}
 	else
 	{
 		self->state.standard &= ~(MOUSE_HOVER | BOX_ACTIVE);
-		// parent->set_state(parent);
-		parent->state.standard &= ~PASSIVE_ACTIVE;
 	}
 
-	if (self->state.standard & ~MOUSE_HOVER && (parent->state.standard & (MOUSE_HOVER | PASSIVE_ACTIVE)) == 0)
+	if ((parent->state.standard & (PASSIVE_ACTIVE | MOUSE_HOVER)) == 0)
+	{
 		self->state.standard &= ~DISPLAY_ON;
+	}
 }
 
 void	state_copy_parent(t_box *self)

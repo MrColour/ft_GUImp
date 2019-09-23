@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:04:45 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/22 18:41:35 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/23 14:48:54 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,27 @@ int		main(void)
 
 	t_box	*program    __attribute__((unused)) = bar_default(&window, "GIMP", 0, WINDOW_HEIGHT);
 	program->set_state = top_item;
-	t_box	*file       __attribute__((unused)) = bar_on_option(program, "File", MOVE_RIGHT);
-	file->set_state = top_item;
-	t_box	*edit       __attribute__((unused)) = bar_on_option(file, "Edit", MOVE_RIGHT);
-	edit->set_state = top_item;
-	t_box	*view       __attribute__((unused)) = bar_on_option(edit, "View", MOVE_RIGHT);
-	view->set_state = top_item;
-	// t_box *bar1    __attribute__((unused)) = bar_on_option(bar, "Something", MOVE_DOWN);
 
-	// printf("PARENT %p and SELF %p\n", bar, bar4->parent);
+	t_box	*bar1    __attribute__((unused)) = bar_on_option(program, "About", MOVE_DOWN);
+	t_box	*bar2    __attribute__((unused)) = bar_on_option(bar1, "Preferences", MOVE_DOWN);
+
+	t_box	*barA1    __attribute__((unused)) = bar_on_option(bar1, "About", MOVE_RIGHT);
+
+	t_box	*file    __attribute__((unused)) = bar_default(&window, "File", BAR_WIDTH, WINDOW_HEIGHT);
+	file->set_state = top_item;
+	t_box	*barf1    __attribute__((unused)) = bar_on_option(file,  "New File", MOVE_DOWN);
+	t_box	*barf2    __attribute__((unused)) = bar_on_option(barf1, "Open", MOVE_DOWN);
+	t_box	*barf3    __attribute__((unused)) = bar_on_option(barf2, "Save", MOVE_DOWN);
+	t_box	*barf4    __attribute__((unused)) = bar_on_option(barf3, "Save As", MOVE_DOWN);
+
+	t_box	*edit    __attribute__((unused)) = bar_default(&window, "Edit", BAR_WIDTH * 2, WINDOW_HEIGHT);
+	edit->set_state = top_item;
+	t_box	*bare1    __attribute__((unused)) = bar_on_option(edit,  "Undo", MOVE_DOWN);
+	t_box	*bare2    __attribute__((unused)) = bar_on_option(bare1, "Redo", MOVE_DOWN);
+	t_box	*bare3    __attribute__((unused)) = bar_on_option(bare2, "Cut", MOVE_DOWN);
+	t_box	*bare4    __attribute__((unused)) = bar_on_option(bare3, "Copy", MOVE_DOWN);
+	t_box	*bare5    __attribute__((unused)) = bar_on_option(bare4, "Paste", MOVE_DOWN);
+
 	quit = 0;
 	stop = 50;
 	while (quit == 0 && stop != 0)
@@ -53,8 +65,9 @@ int		main(void)
 			else if (events.type == SDL_MOUSEMOTION)
 				SDL_GetMouseState(&window.events.mouse_pos_x, &window.events.mouse_pos_y);
 		}
-		render_tree(program);
-		set_tree(program);
+		master_reccursive_call(program);
+		master_reccursive_call(file);
+		master_reccursive_call(edit);
 		SDL_RenderPresent(window.renderer);
 		SDL_Delay(90);
 		// stop--;
