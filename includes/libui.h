@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:07:04 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/18 23:18:16 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/22 17:35:22 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ SDL_Texture	*get_bar_layer(SDL_Renderer *renderer);
 t_box		*bar_default(t_window *window, char *text, int x, int y);
 
 t_box		*bar_on_option(t_box *parent, char *text, int options);
+void		top_item(t_box *self);
 
 t_rect		get_border_rectangle(void);
 SDL_Texture	*get_border_layer(SDL_Renderer *renderer);

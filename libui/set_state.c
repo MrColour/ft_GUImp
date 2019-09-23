@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 00:21:29 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/18 22:49:09 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/22 17:38:45 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,27 @@
 /*
 ** Need a toogle for the menu bar
 */
+
+void	top_item(t_box *self)
+{
+	self->state.standard |= (PASSIVE_ACTIVE | DISPLAY_ON);
+
+	if (is_within(	self->window->events.mouse_pos_x,
+					self->window->events.mouse_pos_y,
+					self->rect,
+					self->state.draw_x,
+					self->state.draw_y) == 1 &&
+					self->state.standard & DISPLAY_ON)
+	{
+		printf("TOP BAR is hoevered\n");
+		self->state.standard |= MOUSE_HOVER;
+	}
+	else
+	{
+		self->state.standard &= ~(MOUSE_HOVER);
+	}
+
+}
 
 void	common_set_state(t_box *self)
 {
@@ -47,22 +68,6 @@ void	common_set_state(t_box *self)
 
 	if (self->state.standard & ~MOUSE_HOVER && (parent->state.standard & (MOUSE_HOVER | PASSIVE_ACTIVE)) == 0)
 		self->state.standard &= ~DISPLAY_ON;
-
-	// if ((parent->state.standard & (MOUSE_HOVER | PASSIVE_ACTIVE)) == 0)
-	// 	self->state.standard = self->state.standard & ~DISPLAY_ON;
-
-	// else
-	// {
-	// 	self->state.standard = 0;
-	// }
-	// if (parent != NULL)
-	// {
-	// 	if (parent->state.standard & BOX_ACTIVE)
-	// 		self->state.standard = self->state.standard | DISPLAY_ON;
-	// 	if (parent->state.standard & PASSIVE_ACTIVE)
-	// 		self->state.standard = self->state.standard | DISPLAY_ON;
-	// }
-	// self->state.standard = parent->state.standard;
 }
 
 void	state_copy_parent(t_box *self)
