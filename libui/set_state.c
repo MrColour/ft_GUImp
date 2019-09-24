@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 00:21:29 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/23 03:52:52 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/23 21:15:55 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,3 +109,19 @@ void	state_copy_parent(t_box *self)
 	}
 }
 
+void	state_display_on_hover(t_box *self)
+{
+	t_box *parent;
+
+	if (self->parent != NULL)
+	{
+		parent = self->parent;
+		if (parent->state.standard & (MOUSE_HOVER))
+		{
+
+			self->state.standard |= DISPLAY_ON;
+		}
+		else
+			self->state.standard &= ~DISPLAY_ON;
+	}
+}

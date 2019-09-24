@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:07:04 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/23 15:00:47 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/23 21:12:52 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ t_box	*common_element_below(t_box *parent, t_rect rect, SDL_Texture *layer);
 
 void	common_set_state(t_box *self);
 void	state_copy_parent(t_box *self);
+void	state_display_on_hover(t_box *self);
+
+t_box	*install_hover(t_box *parent, uint8_t red, uint8_t green, uint8_t blue);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
@@ -62,6 +65,7 @@ SDL_Texture	*get_bar_layer(SDL_Renderer *renderer);
 t_box		*bar_default(t_window *window, char *text, int x, int y);
 
 t_box		*bar_on_option(t_box *parent, char *text, int options);
+t_box		*bar_hover_on_option(t_box *parent, char *text, int option);
 void		top_item(t_box *self);
 
 t_rect		get_border_rectangle(void);
@@ -91,6 +95,7 @@ void	master_reccursive_call(t_box *root);
 void	tree_append(t_box *parent, t_box *child);
 void	tree_append_parent(t_box *parent, t_box *child);
 void	tree_remove(t_box *parent, t_box *child);
+void	tree_list(t_box *parent);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
@@ -118,5 +123,6 @@ void			move_option(t_box *parent, t_box *child, int option);
 */
 
 SDL_Texture		*load_image(const char *file_path, SDL_Renderer *renderer);
+
 
 #endif

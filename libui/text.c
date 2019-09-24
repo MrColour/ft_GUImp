@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 22:27:48 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/17 01:42:40 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/23 20:05:09 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_box	*text_common(t_window *window, char *text, int x, int y)
 {
 	t_box		*text_box;
 	SDL_Texture	*text_texture;
-	SDL_Rect	rect;
 	t_rect		text_rect;
 
 	text_rect.begin_y = 0;
@@ -45,7 +44,6 @@ t_box	*text_common(t_window *window, char *text, int x, int y)
 	text_box->state.draw_y = y;
 	text_box->state.name = text;
 
-	(void)rect;
 	return (text_box);
 }
 

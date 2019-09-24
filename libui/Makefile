@@ -6,7 +6,7 @@
 #    By: kmira <kmira@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/12 11:40:08 by kmira             #+#    #+#              #
-#    Updated: 2019/09/17 01:03:41 by kmira            ###   ########.fr        #
+#    Updated: 2019/09/23 20:11:39 by kmira            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ FILES	=	\
 			element \
 			font \
 			get_size \
+			hover \
 			load \
 			main_window \
 			move \
