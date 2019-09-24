@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 23:20:09 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/23 03:56:13 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/23 22:20:04 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,24 @@ void	set_tree(t_box *box)
 	{
 		// printf("Rendering child\n");
 		set_tree(node->data);
+		node = node->next;
+	}
+}
+
+void	execute_tree(t_box *box)
+{
+	t_linker *node;
+
+	if (box == NULL)
+		return ;
+	// printf("Rendering box\n");
+	node = box->tree;
+	if (box->clicked != NULL)
+		box->clicked(box);
+	while (node != NULL)
+	{
+		// printf("Rendering child\n");
+		execute_tree(node->data);
 		node = node->next;
 	}
 }
@@ -88,5 +106,6 @@ int		state_in_tree(t_box *box, t_activity search_state, int depth)
 void	master_reccursive_call(t_box *root)
 {
 	set_tree(root);
+	execute_tree(root);
 	render_tree(root);
 }

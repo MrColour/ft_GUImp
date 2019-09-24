@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:04:45 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/23 21:17:30 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/23 22:27:36 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int		main(void)
 	int				quit;
 	int				stop;
 
+	bzero(&window.events, sizeof(window.events));
 	back_window = create_default_window(WIN_WIDTH, WIN_HEIGHT);
 	window.renderer = SDL_CreateRenderer(back_window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_TARGETTEXTURE);
 	window.rect = main_window(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -71,6 +72,10 @@ int		main(void)
 			}
 			else if (events.type == SDL_MOUSEMOTION)
 				SDL_GetMouseState(&window.events.mouse_pos_x, &window.events.mouse_pos_y);
+			else if (events.type == SDL_MOUSEBUTTONDOWN)
+				window.events.left_click = 1;
+			else if (events.type == SDL_MOUSEBUTTONUP)
+				window.events.left_click = 0;
 		}
 		master_reccursive_call(program);
 		master_reccursive_call(file);

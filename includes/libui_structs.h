@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 03:40:36 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/18 01:31:21 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/23 21:58:35 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef struct	s_box
 	void			(*set_state)(t_box *self);
 	void			(*child_requirement)(t_box *self);
 	void			(*parent_requirment)(t_box *self);
+	void			(*clicked)(t_box *self);
 
 	void			*(*fetch_state)(t_box *, char *command);
 }				t_box;
