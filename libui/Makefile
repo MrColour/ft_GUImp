@@ -6,7 +6,7 @@
 #    By: kmira <kmira@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/12 11:40:08 by kmira             #+#    #+#              #
-#    Updated: 2019/09/23 20:11:39 by kmira            ###   ########.fr        #
+#    Updated: 2019/09/25 01:29:37 by kmira            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ FILES	=	\
 			main_window \
 			move \
 			render \
+			scale \
 			set_state \
 			text \
 			tree_functions \

@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:07:04 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/23 21:12:52 by kmira            ###   ########.fr       */
+/*   Updated: 2019/09/25 01:30:20 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ void			draw_box(t_box *box);
 void			move_rectangle(t_rect *rectangle, int x, int y);
 void			move_recursive(t_box *box, int amount_right, int amount_down);
 void			move_option(t_box *parent, t_box *child, int option);
+
+void			scale_recursive(t_box *box, float scale_x, float scale_y);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
