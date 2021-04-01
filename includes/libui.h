@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libui.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:07:04 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/25 01:30:20 by kmira            ###   ########.fr       */
+/*   Updated: 2021/03/12 23:34:51 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 # include "SDL.h"
 # include "SDL_image.h"
-# include "SDL_mixer.h"
 # include "SDL_ttf.h"
 
 # include "color.h"

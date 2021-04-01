@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 01:04:45 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/25 02:07:55 by kmira            ###   ########.fr       */
+/*   Updated: 2021/03/31 17:03:13 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int		main(void)
 
 	// Clear the entire screen to our selected color.
 	SDL_RenderClear(window.renderer);
-
 
 	t_box	*program    __attribute__((unused)) = bar_default(&window, "GIMP", 0, WINDOW_HEIGHT);
 	program->set_state = top_item;

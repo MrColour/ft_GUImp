@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kmira <kmira@student.42.fr>                +#+  +:+       +#+         #
+#    By: home <home@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/31 00:32:20 by kmira             #+#    #+#              #
-#    Updated: 2019/09/09 03:55:24 by kmira            ###   ########.fr        #
+#    Updated: 2021/03/12 23:50:23 by home             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,17 +15,9 @@ NAME = run_SDL_tutorial
 FLAGS = -Wall -Wextra -Werror
 
 INCLUDES =  -I includes \
-			-I Frameworks/SDL2.framework/Versions/A/Headers \
-			-I Frameworks/SDL2_image.framework/Versions/A/Headers \
-			-I Frameworks/SDL2_ttf.framework/Versions/A/Headers \
-			-I Frameworks/SDL2_mixer.framework/Versions/A/Headers \
-			-F Frameworks/
+			-I ~/.brew/include/SDL2/
 
-FRAMEWORK = -framework SDL2_mixer \
-			-framework SDL2_image \
-			-framework SDL2_ttf \
-			-framework SDL2 \
-			-F Frameworks/ \
+SDL_LIB = -L ~/.brew/lib -l SDL2 -l sdl2_image -l sdl2_ttf
 
 LIBFT_LIBRARY = libft/libft.a
 LIBUI_LIBRARY = libui/libui.a
@@ -44,7 +36,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT_LIBRARY) $(LIBUI_LIBRARY) $(OBJS)
 	@echo "Making your GUImp program..."
-	@gcc -o $(NAME) $(FLAGS) $(OBJS) $(FRAMEWORK) $(LIBFT_LIBRARY) $(LIBUI_LIBRARY)
+	@gcc -o $(NAME) $(FLAGS) $(OBJS) $(SDL_LIB) $(LIBFT_LIBRARY) $(LIBUI_LIBRARY)
 	@install_name_tool -change @rpath/SDL2.framework/Versions/A/SDL2 Frameworks/SDL2.framework/Versions/A/SDL2 $(NAME)
 	@install_name_tool -change @rpath/SDL2_mixer.framework/Versions/A/SDL2_mixer Frameworks/SDL2_mixer.framework/Versions/A/SDL2_mixer $(NAME)
 	@echo "Done"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libui_structs.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 03:40:36 by kmira             #+#    #+#             */
-/*   Updated: 2019/09/23 21:58:35 by kmira            ###   ########.fr       */
+/*   Updated: 2021/03/12 23:35:05 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "SDL.h"
 # include "SDL_image.h"
-# include "SDL_mixer.h"
 # include "SDL_ttf.h"
 
 typedef struct	s_events
